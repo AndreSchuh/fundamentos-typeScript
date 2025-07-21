@@ -1,0 +1,24 @@
+datasource db {
+  provider = "mongodb"
+  url = env("DATABASE_URL") 
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Tarefa {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  titulo     String
+  concluida  Boolean  @default(false)
+  deletadoEm DateTime?
+}
+
+model Livro {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  titulo        String
+  autor         String
+  anoPublicacao Int
+  disponivel    Boolean @default(true)
+}
